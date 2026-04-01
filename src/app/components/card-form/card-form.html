@@ -1,1 +1,55 @@
-<p>card-form works!</p>
+<div class="container">
+  <h2>{{ isEditMode ? 'Editar Carta' : 'Forjar Nova Carta' }}</h2>
+
+  <form [formGroup]="cardForm" (ngSubmit)="salvar()">
+    
+    <div class="form-group">
+      <label for="nome">Nome da Carta</label>
+      <input id="nome" type="text" formControlName="nome">
+    </div>
+
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" formControlName="descricao" rows="3"></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="classe">Classe</label>
+        <select id="classe" formControlName="classe">
+          <option *ngFor="let c of classes" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" formControlName="tipo">
+          <option *ngFor="let t of tipos" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="ataque">Ataque (0-10)</label>
+        <input id="ataque" type="number" formControlName="ataque" min="0" max="10">
+      </div>
+
+      <div class="form-group">
+        <label for="defesa">Defesa (0-10)</label>
+        <input id="defesa" type="number" formControlName="defesa" min="0" max="10">
+      </div>
+
+      <div class="form-group">
+        <label for="mana">Custo de Mana</label>
+        <input id="mana" type="number" formControlName="mana" min="0" max="10">
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" routerLink="/cards">Cancelar</button>
+      <button type="submit" [disabled]="cardForm.invalid">Salvar Carta</button>
+    </div>
+
+  </form>
+</div>

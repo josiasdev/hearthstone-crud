@@ -1,0 +1,111 @@
+.container {
+  background-color: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 1rem;
+
+  h2 { margin: 0; }
+}
+
+.filtros {
+  border: 1px solid #444;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+
+  legend {
+    padding: 0 0.5rem;
+    color: #a3a3a3;
+  }
+
+  .filtros-grid {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    input, select {
+      flex: 1;
+      min-width: 150px;
+      margin-top: 0; 
+    }
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #444;
+  }
+
+  th {
+    color: #facc15;
+    background-color: #1e1e1e;
+  }
+
+  tbody tr:hover {
+    background-color: #333;
+  }
+
+  a {
+    color: #60a5fa;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.game-info {
+  background-color: #1a365d; 
+  border: 1px solid #3b82f6;
+  border-left: 4px solid #facc15; 
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+
+  h3 {
+    color: #facc15;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  p {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: #93c5fd; 
+    }
+
+    em {
+      color: #fcd34d; 
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+}

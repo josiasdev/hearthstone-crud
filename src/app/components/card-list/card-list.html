@@ -1,1 +1,71 @@
-<p>card-list works!</p>
+<div class="container">
+  <div class="header">
+    <h2>Minha Coleção</h2>
+    <a routerLink="/cards/new" class="btn btn-primary">+ Nova Carta</a>
+  </div>
+
+  <div class="game-info">
+    <h3>Sobre a Taverna (Como o jogo funciona)</h3>
+    <p><strong>O Objetivo:</strong> HearthStone é um jogo de cartas em turnos onde o objetivo é usar seu baralho para eliminar o herói adversário.</p>
+    <p><strong>A Montagem do Baralho:</strong> Cada jogador monta um deck com até <strong>30 cartas</strong>, limitadas a no máximo duas cópias idênticas. Você só pode usar cartas da sua própria <strong>Classe</strong> (Mago, Paladino, Caçador, Druida) ou cartas neutras (classe "Qualquer").</p>
+    <p><strong>As Cartas:</strong> Possuem um custo de <em>Mana (0 a 10)</em> e dividem-se em dois tipos: <em>Criaturas</em> (que ficam na mesa e possuem poder de Ataque e Defesa) e <em>Magias</em> (que causam efeitos imediatos e geralmente não possuem ataque/defesa).</p>
+  </div>
+
+  <fieldset class="filtros">
+    <legend>Pesquisar Cartas</legend>
+    <div class="filtros-grid">
+      <input type="number" [(ngModel)]="filtroId" placeholder="ID da Carta">
+      <input type="text" [(ngModel)]="filtroNome" placeholder="Nome da Carta">
+      
+      <select [(ngModel)]="filtroClasse">
+        <option value="">Todas as Classes</option>
+        @for (c of classes; track c) {
+          <option [value]="c">{{ c }}</option>
+        }
+      </select>
+
+      <select [(ngModel)]="filtroTipo">
+        <option value="">Todos os Tipos</option>
+        @for (t of tipos; track t) {
+          <option [value]="t">{{ t }}</option>
+        }
+      </select>
+      
+      <button (click)="pesquisar()">Buscar</button>
+      <button (click)="limparFiltros()">Limpar</button>
+    </div>
+  </fieldset>
+
+  @if (cards.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Classe</th>
+          <th>Tipo</th>
+          <th>Ataque/Defesa</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (card of cards; track card.id) {
+          <tr>
+            <td>{{ card.id }}</td>
+            <td>{{ card.nome }}</td>
+            <td>{{ card.classe }}</td>
+            <td>{{ card.tipo }}</td>
+            <td>{{ card.ataque }} / {{ card.defesa }}</td>
+            <td>
+              <a [routerLink]="['/cards', card.id, 'edit']">Editar</a> | 
+              <a href="javascript:void(0)" (click)="excluir(card.id)">Excluir</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <p>Nenhuma carta encontrada. Comece a forjar seu deck!</p>
+  }
+
+</div>

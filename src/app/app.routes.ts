@@ -8,15 +8,15 @@ export const routes: Routes = [
   },
   { 
     path: 'cards', 
-    loadComponent: () => import('./components/card-list/card-list').then(c => c.CardList)
+    loadComponent: () => import('./components/card-list/card-list').then(c => c.CardListComponent)
   },
   { 
     path: 'cards/new', 
-    loadComponent: () => import('./components/card-form/card-form').then(c => c.CardForm)
+    loadComponent: () => import('./components/card-form/card-form').then(c => c.CardFormComponent)
   },
   { 
     path: 'cards/:id/edit', 
-    loadComponent: () => import('./components/card-form/card-form').then(c => c.CardForm)
+    loadComponent: () => import('./components/card-form/card-form').then(c => c.CardFormComponent)
   },
   { 
     path: '**', 
